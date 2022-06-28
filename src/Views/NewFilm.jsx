@@ -1,5 +1,14 @@
+import Card from "../components/Card";
+import NewFilmForm from "../components/newFilmForm";
+
 function NewFilm() {
-  return <div>Add New Film</div>;
+  return (
+    <div>
+      <Card>
+        <NewFilmForm></NewFilmForm>
+      </Card>
+    </div>
+  );
 }
 
 export default NewFilm;

@@ -1,9 +1,10 @@
 
 import styles from './FilmItem.module.css';
+import Card from './Card';
 
 function FilmItem(props) {
     return (
-        <div>
+        <Card>
             <div className={styles.image}>
                 <img src={props.oneFilm.image}></img>
             </div>
@@ -20,7 +21,7 @@ function FilmItem(props) {
 
 
 
-        </div>
+        </Card>
     )
 }
 
