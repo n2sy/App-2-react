@@ -1,3 +1,5 @@
+import FilmList from '../components/FilmList';
+
 function AllFilms() {
     const listFilms = [
         {
@@ -16,7 +18,10 @@ function AllFilms() {
         }
     ]
     return (
-        <div>All Films</div>
+        <div>
+            <h4>All Films</h4>
+            <FilmList listOfFilms={listFilms}></FilmList>
+        </div>
     )
 }
 
