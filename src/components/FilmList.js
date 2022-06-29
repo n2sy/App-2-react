@@ -6,11 +6,11 @@ import styles from './FilmList.module.css';
 function FilmList(props) {
     return (
         <div>
-            <ol className={styles.list}>
+            <ul className={styles.list}>
                 {props.listOfFilms.map((f) => {
                     return <FilmItem oneFilm={f}></FilmItem>
                 })}
-            </ol>
+            </ul>
 
         </div>
     )

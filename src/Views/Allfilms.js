@@ -18,10 +18,10 @@ function AllFilms() {
         }
     ]
     return (
-        <div>
+        <section>
             <h4>All Films</h4>
             <FilmList listOfFilms={listFilms}></FilmList>
-        </div>
+        </section>
     )
 }
 
