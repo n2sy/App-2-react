@@ -23,7 +23,7 @@ function AllFilms() {
     ];
 
     useEffect(() => {
-        //setLoading(true);
+        setLoading(true);
         fetch('https://filmstore-409b9-default-rtdb.firebaseio.com/Films.json')
             .then(res => {
                 return res.json();
@@ -33,9 +33,12 @@ function AllFilms() {
                 console.log(data);
                 for (const key in data) {
                     data[key].id = key;
-                    listFilms.push(data[key]);
+                    //listFilms.push(data[key]);
+                    setTabFilms((prev) => {
+                        return [...prev, data[key]]
+                    })
                 }
-                setTabFilms(listFilms);
+                //setTabFilms(listFilms);
                 //console.log(listFilms);
             })
     }, []);
@@ -67,6 +70,7 @@ function AllFilms() {
         <section>
             <h4>All Films</h4>
             <FilmList listOfFilms={tabFilms}></FilmList>
+
         </section>
     )
 }
