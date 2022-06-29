@@ -1,8 +1,10 @@
 
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './NewFilmForm.module.css';
 
 function NewFilmForm() {
+    const navigate = useNavigate();
     // V1 : Formulaires controlés
     // const [formInput, setFormInput] = useState({
     //     title: '',
@@ -75,15 +77,30 @@ function NewFilmForm() {
 
     function submitHandler(e) {
         e.preventDefault();
-        console.log(
-            {
-                title: refTitle.current.value,
-                image: refImage.current.value,
-                description: refDesc.current.value,
-                year: refYear.current.value,
+        let NewFilm =
+        {
+            title: refTitle.current.value,
+            image: refImage.current.value,
+            description: refDesc.current.value,
+            year: refYear.current.value,
 
-            }
-        );
+        };
+        fetch('https://filmstore-409b9-default-rtdb.firebaseio.com/Films.json',
+            {
+                method: 'POST',
+                body: JSON.stringify(NewFilm),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then((res) => {
+                alert('Film bien ajouté');
+                // navigate(-1);
+                navigate('/allfilms', { replace: true });
+            })
+            .catch((err) => {
+                alert("Erreur inconnue !")
+            })
+
+
     }
 
     return (
