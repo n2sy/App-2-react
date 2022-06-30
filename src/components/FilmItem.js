@@ -1,8 +1,26 @@
 
 import styles from './FilmItem.module.css';
 import Card from './Card';
+import { useContext } from 'react';
+import { FavContext } from '../store/favorites-context';
 
 function FilmItem(props) {
+    const FavCtx = useContext(FavContext);
+    //  let contentBtn = '';
+
+
+
+
+    function favHandler() {
+        if (!FavCtx.isFavorite(props.oneFilm.id)) {
+            FavCtx.addToFavorites(props.oneFilm);
+            //  contentBtn = "Remove From Favorites";
+        }
+        else {
+            FavCtx.removeFromFavorites(props.oneFilm.id);
+            //   contentBtn = "To Favorites";
+        }
+    }
     return (
         <Card>
             <div className={styles.item}>
@@ -17,7 +35,7 @@ function FilmItem(props) {
 
                 </div>
                 <div className={styles.actions}>
-                    <button>To Favorites</button>
+                    <button onClick={favHandler}>{FavCtx.isFavorite(props.oneFilm.id) ? 'Remove From Favorites' : 'To Favorites'}</button>
                 </div>
 
 
