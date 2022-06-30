@@ -17,6 +17,8 @@ function NavBar() {
                     <li><Link to="/favorites"><button type="button" class="btn btn-primary">
                         Favorites <span class="badge bg-secondary">{FavC.nbFavorites}</span>
                     </button></Link></li>
+                    <li><Link to="/login">Login</Link></li>
+
                 </ul>
             </nav>
         </header>
