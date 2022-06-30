@@ -13,25 +13,48 @@ import NavBar from './components/navbar';
 import Layout from './components/Layout';
 import OneFilm from './Views/OneFilm';
 import Login from './components/Login';
+import { useContext } from 'react';
+import { LoginContext } from './store/login-context';
 
 function App() {
-  return (
-    <>
-      <NavBar></NavBar>
+  const LogCtx = useContext(LoginContext);
 
-      <Layout>
+  console.log(LogCtx.isLogged);
 
-        <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/allfilms" element={<AllFilms ></AllFilms>}></Route>
-          <Route path="/allfilms/:id/:age" element={<OneFilm ></OneFilm>}></Route>
-          <Route path="/newfilm" element={<NewFilm></NewFilm>}></Route>
-          <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/favorites" element={<Favorites></Favorites>}></Route>
-        </Routes>
-      </Layout>
-    </>
-  );
+  if (LogCtx.isLogged)
+    return (
+      <>
+        <NavBar></NavBar>
+
+        <Layout>
+
+          <Routes>
+            <Route path="/" element={<Home></Home>}></Route>
+            <Route path="/allfilms" element={<AllFilms ></AllFilms>}></Route>
+            <Route path="/allfilms/:id/:age" element={<OneFilm ></OneFilm>}></Route>
+            <Route path="/newfilm" element={<NewFilm></NewFilm>}></Route>
+            <Route path="/login" element={<Login></Login>}></Route>
+            <Route path="/favorites" element={<Favorites></Favorites>}></Route>
+          </Routes>
+        </Layout>
+      </>
+    )
+  else {
+    return (
+      <>
+        <NavBar></NavBar>
+
+        <Layout>
+
+          <Routes>
+
+            <Route path="/login" element={<Login></Login>}></Route>
+
+          </Routes>
+        </Layout>
+      </>
+    )
+  }
 }
 
 export default App;

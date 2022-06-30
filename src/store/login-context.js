@@ -9,17 +9,23 @@ export const LoginContext = createContext(
     }
 )
 
-function LoginContextProdiver(props) {
+function LoginContextProvider(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     function seConnecter(email, pwd) {
         if (email === "nidhal@gmail.com" && pwd === "azerty") {
             localStorage.setItem('logged', '1');
+
             setIsLoggedIn(true);
+            console.log(isLoggedIn);
+            return true;
         }
-        else
+        else {
             localStorage.setItem('logged', '0');
-        setIsLoggedIn(false);
+            setIsLoggedIn(false);
+            return false;
+        }
+
     }
 
     function seDeconnecter() {
@@ -40,4 +46,4 @@ function LoginContextProdiver(props) {
     )
 }
 
-export default LoginContextProdiver;
+export default LoginContextProvider;
