@@ -38,9 +38,6 @@ function FavoritesContextProvider(props) {
         isFavorite: isFaovrite
     }
 
-
-
-
     return (
         <FavContext.Provider value={context}>
             {props.children}

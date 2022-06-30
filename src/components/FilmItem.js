@@ -8,9 +8,6 @@ function FilmItem(props) {
     const FavCtx = useContext(FavContext);
     //  let contentBtn = '';
 
-
-
-
     function favHandler() {
         if (!FavCtx.isFavorite(props.oneFilm.id)) {
             FavCtx.addToFavorites(props.oneFilm);
@@ -20,6 +17,7 @@ function FilmItem(props) {
             FavCtx.removeFromFavorites(props.oneFilm.id);
             //   contentBtn = "To Favorites";
         }
+        console.log(FavCtx.favorites);
     }
     return (
         <Card>
