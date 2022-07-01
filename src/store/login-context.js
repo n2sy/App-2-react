@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
 
+import { createContext } from 'react';
+import { useState } from 'react';
 
 export const LoginContext = createContext(
     {
@@ -7,40 +8,27 @@ export const LoginContext = createContext(
         seConnecter: () => { },
         seDeconnecter: () => { }
     }
-)
+);
 
 function LoginContextProvider(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    function seConnecter(email, pwd) {
-        if (email === "nidhal@gmail.com" && pwd === "azerty") {
-            localStorage.setItem('logged', '1');
-
-            setIsLoggedIn(true);
-            console.log(isLoggedIn);
-            return true;
-        }
-        else {
-            localStorage.setItem('logged', '0');
-            setIsLoggedIn(false);
-            return false;
-        }
-
+    function seConnecter(login, pwd) {
+        if (login === "nidhal@gmail.com" && pwd === "azerty") { setIsLoggedIn(true); return true; }
+        else { setIsLoggedIn(false); return false; }
     }
 
     function seDeconnecter() {
-        localStorage.setItem('logged', '0');
         setIsLoggedIn(false);
     }
 
-
-    const context = {
+    const MyContext = {
         isLogged: isLoggedIn,
         seConnecter: seConnecter,
         seDeconnecter: seDeconnecter
     }
     return (
-        <LoginContext.Provider value={context}>
+        <LoginContext.Provider value={MyContext}>
             {props.children}
         </LoginContext.Provider>
     )

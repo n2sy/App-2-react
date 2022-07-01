@@ -8,7 +8,7 @@ function FilmList(props) {
         <div>
             <ul className={styles.list}>
                 {props.listOfFilms.map((f) => {
-                    return <FilmItem oneFilm={f}></FilmItem>
+                    return <FilmItem key={f.id} oneFilm={f}></FilmItem>
                 })}
             </ul>
 

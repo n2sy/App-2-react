@@ -4,8 +4,10 @@ import NavBar from './navbar';
 
 function Layout(props) {
     return (
-        <div className={styles.main}>
-            {props.children}
+        <div>
+            <NavBar></NavBar>
+            <main className={styles.main}> {props.children}</main>
+
         </div>
     )
 }

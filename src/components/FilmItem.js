@@ -21,7 +21,7 @@ function FilmItem(props) {
     }
     return (
         <Card>
-            <div className={styles.item}>
+            <li className={styles.item}>
                 <div className={styles.image}>
                     <img src={props.oneFilm.image}></img>
                 </div>
@@ -37,7 +37,7 @@ function FilmItem(props) {
                 </div>
 
 
-            </div>
+            </li>
         </Card>
     )
 }
